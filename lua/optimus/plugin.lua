@@ -28,4 +28,9 @@ return require('packer').startup(function(use)
     'hrsh7th/cmp-nvim-lsp',
 		{'L3MON4D3/LuaSnip', run = "make install_jsregexp"}
 	}
+	use {'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons', -- optional
+		},
+	}
 end)
