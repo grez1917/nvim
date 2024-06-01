@@ -20,7 +20,7 @@ require("mason").setup({
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason-lspconfig").setup({
-  ensure_installed = {"lua_ls", "clangd", "phpactor", "jdtls"},
+  ensure_installed = {"lua_ls", "clangd", "jdtls"},
   automatic_installation = true,
 	require("lspconfig").lua_ls.setup{ capabilities = capabilities },
 	require("lspconfig").clangd.setup{},
@@ -30,6 +30,9 @@ require("mason-lspconfig").setup({
 		end,
 	},
 	require("lspconfig").phpactor.setup{
+		cmd = { 'phpactor', 'language-server', '-vvv' },
+		filetypes = { 'php' },
+		on_attach = on_attach,
 		root_dir = function(fname)
         return vim.loop.cwd()
     end,

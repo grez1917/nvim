@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
   }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use {'nvim-telescope/telescope.nvim', tag = '0.1.x', 
-  requires = { {'nvim-lua/plenary.nvim'} }
+	  requires = { {'nvim-lua/plenary.nvim'} }
   }
   use { "catppuccin/nvim", as = "catppuccin" }
   use {
@@ -39,5 +39,25 @@ return require('packer').startup(function(use)
     config = function()
         require("nvim-autopairs").setup {}
     end
+	}
+	use {
+		"majutsushi/tagbar",
+			requires = {
+				"universal-ctags/ctags"
+			}
+	}
+	use {
+		"phpactor/phpactor",
+		"gbprod/phpactor.nvim",
+			build = function()
+				require("phpactor.handler.update")()
+			end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"neovim/nvim-lspconfig"
+		},
+		opts = {
+			-- you're options coes here
+		},
 	}
 end)
