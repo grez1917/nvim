@@ -1,9 +1,13 @@
-local util = require 'lspconfig.util'
+require("lspconfig").phpactor.setup{}
+
+local util = require('lspconfig.util')
 
 return {
   default_config = {
     cmd = { 'phpactor', 'language-server' },
     filetypes = { 'php' },
+		on_attach = on_attach,
+		capabilities = capabilities,
     root_dir = function(pattern)
       local cwd = vim.loop.cwd()
       local root = util.root_pattern('composer.json', '.git', '.phpactor.json', '.phpactor.yml')(pattern)
@@ -14,6 +18,7 @@ return {
   },
   docs = {
 		description = [[
+			lala yeyey
 			https://github.com/phpactor/phpactor
 			Installation: https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
 			]],

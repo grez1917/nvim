@@ -29,15 +29,15 @@ require("mason-lspconfig").setup({
 			return vim.loop.cwd()
 		end,
 	},
-	require("lspconfig").phpactor.setup{
-		cmd = { 'phpactor', 'language-server', '-vvv' },
-		filetypes = { 'php' },
-		on_attach = on_attach,
-		root_dir = function(fname)
-        return vim.loop.cwd()
-    end,
-		capabilities = capabilities,
-	}
+	-- require("lspconfig").phpactor.setup{
+	-- 	cmd = { 'phpactor', 'language-server', '-vvv' },
+	-- 	filetypes = { 'php' },
+	-- 	on_attach = on_attach,
+	-- 	root_dir = function(fname)
+  --       return vim.loop.cwd()
+  --   end,
+	-- 	capabilities = capabilities,
+	-- }
 })
 
 
