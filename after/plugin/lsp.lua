@@ -20,7 +20,7 @@ require("mason").setup({
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason-lspconfig").setup({
-  ensure_installed = {"lua_ls", "clangd", "jdtls"},
+  ensure_installed = {"lua_ls", "clangd", "jdtls", "intelephense"},
   automatic_installation = true,
 	require("lspconfig").lua_ls.setup{ capabilities = capabilities },
 	require("lspconfig").clangd.setup{},
@@ -29,17 +29,17 @@ require("mason-lspconfig").setup({
 			return vim.loop.cwd()
 		end,
 	},
-	-- require("lspconfig").phpactor.setup{
-	-- 	cmd = { 'phpactor', 'language-server', '-vvv' },
-	-- 	filetypes = { 'php' },
-	-- 	on_attach = on_attach,
-	-- 	root_dir = function(fname)
-  --       return vim.loop.cwd()
-  --   end,
-	-- 	capabilities = capabilities,
-	-- }
+	require("lspconfig").intelephense.setup{
+		cmd = { "intelephense", "--stdio" },
+		filetypes = { 'php' },
+		on_attach = on_attach,
+		root_dir = function(fname)
+        return vim.loop.cwd()
+    end,
+		capabilities = capabilities,
+	}
 })
 
 
--- require("lspconfig").lua_ls.setup{}
--- require'lspconfig'.clangd.setup{}
+require("lspconfig").lua_ls.setup{}
+require'lspconfig'.clangd.setup{}
