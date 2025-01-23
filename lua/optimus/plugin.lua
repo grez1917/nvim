@@ -12,6 +12,12 @@ return require('packer').startup(function(use)
     requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
   }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
+
   use {'nvim-telescope/telescope.nvim', tag = '0.1.x', 
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
@@ -59,5 +65,9 @@ return require('packer').startup(function(use)
 		opts = {
 			-- you're options coes here
 		},
+	}
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
 end)

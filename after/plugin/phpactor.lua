@@ -5,7 +5,7 @@ local util = require('lspconfig.util')
 return {
   default_config = {
     cmd = { 'phpactor', 'language-server' },
-    filetypes = { 'php' },
+    filetypes = { 'php', 'blade' },
 		on_attach = on_attach,
 		capabilities = capabilities,
     root_dir = function(pattern)

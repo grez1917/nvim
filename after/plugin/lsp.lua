@@ -17,6 +17,15 @@ require("mason").setup({
     }
 })
 
+require('cmp').setup{
+	sources = {
+		{ name = 'nvim_lsp'}
+	},
+	completion = {
+		autocompete = true
+	}
+}
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason-lspconfig").setup({
@@ -68,5 +77,5 @@ require("mason-lspconfig").setup({
 })
 
 
--- require("lspconfig").lua_ls.setup{}
--- require'lspconfig'.clangd.setup{}
+require("lspconfig").lua_ls.setup{}
+require'lspconfig'.clangd.setup{}
